@@ -48,6 +48,12 @@ public class ShortURL {
         Put p = new Put(Bytes.toBytes(md5(shortUrl)+"_"+ timestamp));
 
 
+        String pageTitle = "Inizializzare";
+        String clicks = "Inizializzare";
+        String status = "Inizializzare";
+        String createdTime = "Inizializzare";
+
+
         // adding values using addColumn() method
         // accepts column family name, qualifier/row name ,value
         p.addColumn(Bytes.toBytes("d"),
@@ -67,6 +73,18 @@ public class ShortURL {
 
         p.addColumn(Bytes.toBytes("d"),
                 Bytes.toBytes("ec"), Bytes.toBytes(expiresByClick));
+
+        p.addColumn(Bytes.toBytes("d"),
+                Bytes.toBytes("pt"), Bytes.toBytes(pageTitle));
+
+        p.addColumn(Bytes.toBytes("d"),
+                Bytes.toBytes("cl"), Bytes.toBytes(clicks));
+
+        p.addColumn(Bytes.toBytes("d"),
+                Bytes.toBytes("st"), Bytes.toBytes(status));
+
+        p.addColumn(Bytes.toBytes("d"),
+                Bytes.toBytes("ct"), Bytes.toBytes(createdTime));
 
 
 

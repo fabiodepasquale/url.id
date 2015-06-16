@@ -21,7 +21,7 @@ public class Statistics {
 
     }
 
-    public static void addSEntry (String shortUrl, String ip, String countryCode, String browser) throws IOException{
+    public static void addSEntry (String shortUrl, String ip, String countryCode, String browser, String os, String referrers) throws IOException{
         // Create connection config
         Configuration config = HBaseConfiguration.create();
 
@@ -50,9 +50,6 @@ public class Statistics {
         // adding values using addColumn() method
         // accepts column family name, qualifier/row name ,value
         p.addColumn(Bytes.toBytes("d"),
-                Bytes.toBytes("su"), Bytes.toBytes(shortUrl));
-
-        p.addColumn(Bytes.toBytes("d"),
                 Bytes.toBytes("ip"), Bytes.toBytes(ip));
 
         p.addColumn(Bytes.toBytes("d"),
@@ -60,6 +57,12 @@ public class Statistics {
 
         p.addColumn(Bytes.toBytes("d"),
                 Bytes.toBytes("br"), Bytes.toBytes(browser));
+
+        p.addColumn(Bytes.toBytes("d"),
+                Bytes.toBytes("os"), Bytes.toBytes(os));
+
+        p.addColumn(Bytes.toBytes("d"),
+                Bytes.toBytes("re"), Bytes.toBytes(referrers));
 
 
         // Saving the put Instance to the Table.

@@ -45,9 +45,6 @@ public class LongURL {
         p.addColumn(Bytes.toBytes("d"),
                 Bytes.toBytes("su"), Bytes.toBytes(shortUrl));
 
-        p.addColumn(Bytes.toBytes("d"),
-                Bytes.toBytes("ts"), Bytes.toBytes(timestamp));
-
 
         // Saving the put Instance to the Table.
         try {
