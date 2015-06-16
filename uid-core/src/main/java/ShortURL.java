@@ -21,7 +21,7 @@ public class ShortURL {
 
     }
 
-    public static void addSUEntry (String shortUrl, String longUrl, boolean protection, String password,  int expiresByTime, int expiresByClick) throws IOException{
+    public static void addSUEntry (String shortUrl, String longUrl, boolean protection, String password,  int expireTime, int expireClick) throws IOException{
         // Create connection config
         Configuration config = HBaseConfiguration.create();
 
@@ -69,10 +69,10 @@ public class ShortURL {
                 Bytes.toBytes("pw"), Bytes.toBytes(password));
 
         p.addColumn(Bytes.toBytes("d"),
-                Bytes.toBytes("et"), Bytes.toBytes(expiresByTime));
+                Bytes.toBytes("et"), Bytes.toBytes(expireTime));
 
         p.addColumn(Bytes.toBytes("d"),
-                Bytes.toBytes("ec"), Bytes.toBytes(expiresByClick));
+                Bytes.toBytes("ec"), Bytes.toBytes(expireClick));
 
         p.addColumn(Bytes.toBytes("d"),
                 Bytes.toBytes("pt"), Bytes.toBytes(pageTitle));
