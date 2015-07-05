@@ -35,3 +35,18 @@ EXPOSE 8080
 #USER root
 
 CMD /usr/local/hbase/start-tail.sh
+
+RUN echo 'clone git repository url.id'
+RUN git clone https://github.com/GruppoPBDMNG-3/url.id.git
+RUN cd url.id/uid
+
+RUN echo 'update and install maven'
+RUN apt-get update
+RUN apt-get --no-install-recommends install maven -y
+
+RUN echo 'build  with maven'
+RUN mvn package
+
+RUN cd target
+RUN echo 'initialize database'
+RUN java -jar uid-1.0.jar -i
