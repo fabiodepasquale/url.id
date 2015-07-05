@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>URL.id - 404</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/test.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <div class="container">
+
+    <div class="header clearfix">
+      <div class="logo"><a href="/" target="_parent"><img src="images/logo.png" alt=""/></a></div>
+      <nav>
+        <ul class="nav header-nav">
+          <li><a href="/">Home</a></li>
+          <li class="active"><a href="#">API</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="content left">
+      <div class="block block-text">
+        <h2>Introduction</h2>
+        <hr />
+        <p>The URL.id Shortener is a service that takes long URLs and squeezes them into fewer characters to make a link that is easier to share, tweet, or email to friends.
+          Users can create these short links through the web interface at url.id, or they can programatically create them through the URL.id Shortener API.
+          With the URL.id Shortener API you can write applications that use simple HTTP methods to create and inspect url.id short links from desktop, mobile, or web.
+        </p>
+        <p>URL.id Shortener provides several options to customize your link. These will be explained below.</p>
+        <h2>Actions</h2>
+        <hr />
+        <h3>Shorten a long URL</h3>
+        <p>The URL.id Shortener API allows you to shorten URLs just as you would on url.id.
+          For example, to shorten the URL http://www.facebook.com, send the following request:</p>
+<pre><code>POST http://url.id/api/v1/url
+Content-Type: application/json
+
+{"longUrl": "http://www.facebook.com/"}</code></pre>
+        <p>If successful, the response will look like:</p>
+<pre><code>{
+  "shortUrl":"iBGhW",
+  "longUrl":"http://www.facebook.com/",
+  "code":200,
+  "message":"OK"
+}</code></pre>
+        <ul>
+          <li><b>shortUrl</b> is the URL that expands to the long URL you provided. If your don't add any option to request, then this URL will be public and it might be reused from a previous request to shorten the same URL.</li>
+          <li><b>longUrl</b> is the long URL to which it expands. In most cases, this will be the same as the URL you provided. In some cases, the server may canonicalize the URL. For instance, if you pass http://www.facebook.com, the server will add a trailing slash.</li>
+          <li><b>code</b> is the HTTP-code of the request.</li>
+          <li><b>message</b> is a human-readable explanation of HTTP-code.</li>
+        </ul>
+        <h4>Options:</h4>
+        <p>You can use these options in parameters with POST request:</p>
+        <ul>
+          <li><b>shortUrl</b> - to give your custom shortUrl</li>
+          <li><b>pass</b> - to protect your short link with password</li>
+          <li><b>extime</b> - to set the expiry time after which your link willn't be accessible. The date must be in the format YYYY-MM-DDTHH:mm:ss</li>
+          <li><b>excliks</b> - to set maximum numbers of clicks that can be made</li>
+        </ul>
+        <p>Example of the request with all options:</p>
+<pre><code>POST http://url.id/api/v1/url
+Content-Type: application/json
+
+{
+  "longUrl": "http://www.facebook.com/",
+  "shortUrl": "fb",
+  "pass": "p@ssw123",
+  "extime": "2015-08-01T15:00:00",
+  "exclicks": "25"
+}</code></pre>
+<pre class="bg-danger text-danger"><span class="glyphicon glyphicon-info-sign"></span> Note:
+   To avoid errors <b>longUrl</b> must be accessible and provided in extended format
+   (with protocol). Links without protocol (http/ftp etc) will generate an error.</pre>
+        <h3>Expand a short URL</h3>
+        <p>You can call this method to expand any url.id short URL. For example, to expand http://url.id/fb, send the following request:</p>
+<pre><code>GET http://url.id/api/v1/url?shortUrl=fb</code></pre>
+<pre class="bg-danger text-danger"><span class="glyphicon glyphicon-info-sign"></span> Note:
+   If you have protected link, the request must be in format:
+   <b>GET http://url.id/api/v1/url?shortUrl=fb&pass=p@ssw123</b></pre>
+        <p>If successful, the response will look like:</p>
+<pre><code>{
+  "shortUrl":"fb",
+  "longUrl":"http://www.facebook.com",
+  "code":200,
+  "message":"OK"
+}</code></pre>
+        <h3>Look up a short URL's analytics</h3>
+        <p>To look up a short URL's analytics, issue an expand request use next request (ex. to show fb shortUrl statistics) :</p>
+<pre><code>POST http://url.id/api/v1/stat/fb
+Content-Type: application/json
+
+{
+  "from": "2015-07-20T00:00:00"
+  "to": "2015-03-25T12:00:00"
+}</code></pre>
+        <ul>
+          <li><b>from</b> and <b>to</b> are optional parameters specifying a range of dates to retrieve information.</li>
+        </ul>
+        <p>If successful, the response will look like:</p>
+<pre><code>{
+  "shortUrl": "fb",
+  "longUrl": "http://facebook.com",
+  "pageTitle": "Facebook",
+  "status":"OK",
+  "clicks": 152,
+  "analytics": [
+    {
+      "browsers":
+      [{"count":10,"id":"Safari"},{"count":84,"id":"Chrome"} ...],
+      "countries":
+      [{"count":5,"id":"it"},{"count":15,"id":"fr"} ...],
+      "platforms":
+      [{"count":6,"id":"Ubuntu"},{"count":9,"id":"Windows 8.1"} ...]
+    }
+  ],
+  "createdTime": 1277288524000,
+  "code": 200,
+  "message": "OK"
+}</code></pre>
+
+      </div>
+    </div>
+
+  </div> <!-- /container -->
+  <footer class="footer">
+    <p>Copyright &copy; <a href="http://url.id">URL.id</a> 2015, designed by <a href="https://twitter.com/rehelpstudio">@rehelpstudio</a>.</p>
+  </footer>
+
+  </body>
+</html>
