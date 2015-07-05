@@ -10,15 +10,9 @@ Preconfigurazione
 
 ### b. Selezionare il container di docker o boot2docker
 
-### c. Aprire Cartelle condivise 
+### c. Aprire Rete e selezionare Inoltro delle porte
 
-### d. Aggiungere una nuova cartella chiamata "condivisa" con accesso completo e confermare
-
-Salvare il percorso specificato poiché servirà dopo
-
-### e. Aprire Rete e selezionare Inoltro delle porte
-
-### f. Aggiugere un'eccezione UDP e una TCP per la porta 8080 ed IP 127.0.0.1 e confermare
+### d. Aggiugere un'eccezione UDP e una TCP per la porta 8080 ed IP 127.0.0.1 e confermare
 
 
 Steps 
@@ -58,13 +52,12 @@ Su boot2docker usare questo
 
 ### 4. Avviare l'immagine
 
-avvia l'immagine in modalità demone con porte 8080, 2181, 60010, 60000, 60020 e 60030 aperte e cartella condivisa
+avvia l'immagine in modalità demone con porte 8080, 2181, 60010, 60000, 60020 e 60030 aperte
 ```bash
 
-docker run -v /DISCO/PATH:/condivisa:/root/condivisa -d -p 8080:8080 -p 2181:2181 -p 60010:60010 -p 60000:60000 -p 60020:60020 -p 60030:60030 --name hbase -h hbase hbase:single
+docker run -d -p 8080:8080 -p 2181:2181 -p 60010:60010 -p 60000:60000 -p 60020:60020 -p 60030:60030 --name hbase -h hbase hbase:single
 
 ```
-con PATH si intende il percorso della cartella condvisa specificato durante la fase di preconfigurazione, escluso il disco in cui si trova (esso va specificato al posto della parola DISCO) esempio: /c/Users/condivisa
 
 ### Nota
 
@@ -85,11 +78,22 @@ docker exec -it hbase bash
 
 ```
 
-### 6. Avviare la shell
+### 6. Clonare la repository ed accedervi
 
 ```bash
 
-hbase shell
+git clone https://github.com/GruppoPBDMNG-3/url.id.git
+cd url.id/
 
 ```
 
+### 7. Installare Maven
+```bash
+
+apt-get update
+
+apt-get install maven -y
+
+```
+
+### 
