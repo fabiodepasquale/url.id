@@ -31,7 +31,7 @@ boot2docker ssh
 ```bash
 
 git clone https://github.com/GruppoPBDMNG-3/url.id.git
-cd url.id/hbase
+cd url.id/hbase-setup
 
 ```
 
