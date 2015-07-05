@@ -93,7 +93,7 @@ cd url.id/uid
 
 apt-get update
 
-apt-get install maven -y
+sudo apt-get --no-install-recommends install maven -y
 
 ```
 
