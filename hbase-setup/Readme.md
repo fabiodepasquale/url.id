@@ -78,12 +78,13 @@ docker exec -it hbase bash
 
 ```
 
+
 ### 6. Clonare la repository ed accedervi
 
 ```bash
 
 git clone https://github.com/GruppoPBDMNG-3/url.id.git
-cd url.id/
+cd url.id/uid
 
 ```
 
@@ -96,4 +97,41 @@ apt-get install maven -y
 
 ```
 
-### 
+### 8. Eseguire build con Maven
+
+```bash
+
+mvn package
+
+```
+
+### 9. Accesso cartella eseguibile
+```bash
+
+cd target
+
+```
+
+### 10. Inizializzazione Database
+
+```bash
+
+java -jar uid-1.0.jar -i
+
+```
+
+### 11. Avvio del server
+
+```bash
+
+java -jar uid-1.0.jar -a
+
+```
+
+### 12. Accesso pagina iniziale
+
+Nel browser aprire la pagina
+
+http://localhost:8080/
+oppure 
+http://localhost:8080/index.html
