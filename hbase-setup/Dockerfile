@@ -38,7 +38,7 @@ CMD /usr/local/hbase/start-tail.sh
 
 RUN echo 'clone git repository url.id'
 RUN git clone https://github.com/GruppoPBDMNG-3/url.id.git
-RUN cd url.id/uid
+RUN cd url.id/
 
 RUN echo 'update and install maven'
 RUN apt-get update
