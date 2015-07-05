@@ -1,6 +1,6 @@
 FROM java:8-jdk
 
-MAINTAINER Fabio Fumarola <fabiofumarola@gmail.com>
+MAINTAINER Fabio De Pasquale <fabiodepasquale1991@gmail.com>
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
 ENV HBASE_VERSION 1.1.0.1
@@ -35,3 +35,29 @@ EXPOSE 8080
 #USER root
 
 CMD /usr/local/hbase/start-tail.sh
+
+RUN echo 'clone git repository url.id'
+RUN git clone https://github.com/GruppoPBDMNG-3/url.id.git
+RUN cd url.id/uid
+
+RUN echo 'update and install maven'
+RUN apt-get update
+RUN apt-get --no-install-recommends install maven -y
+
+RUN echo 'build  with maven'
+RUN mvn package
+
+RUN cd target
+RUN echo 'initialize database'
+RUN java -jar uid-1.0.jar -i
+
+RUN echo 'delete setup file'
+ADD uid-1.0.jar ../
+RUN cd ..
+
+RUN rm -rf target
+RUN rm -rf out
+RUN rm -rf src
+RUN rm -rf hbase-seup
+
+RUN echo 'installed'
