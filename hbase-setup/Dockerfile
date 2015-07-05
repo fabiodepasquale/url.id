@@ -1,4 +1,4 @@
-FROM java:8-jdk
+FROM dockerfile/java:oracle-java8
 
 MAINTAINER Fabio Fumarola <fabiofumarola@gmail.com>
 
