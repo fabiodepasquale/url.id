@@ -1,4 +1,4 @@
-FROM java:8-jdk
+FROM java:openjdk-8u45-jdk
 
 MAINTAINER Fabio Fumarola <fabiofumarola@gmail.com>
 
