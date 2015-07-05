@@ -5,7 +5,7 @@ Immagine di partenza java:8-jdk
 
 Steps 
 -----
-### 0. Avviare e connettere docker, docker-machime o boot2docker
+### 0. Avviare e connettere docker, docker-machine o boot2docker
 
 Es. con boot2docker scrivere nel terminale Git Bash
 ```bash
@@ -28,7 +28,7 @@ cd laboratorio
 
 ```bash
 
-git clone https://github.com/fabiodepasquale/hbase.git
+git clone https://github.com/GruppoPBDMNG-3/url.id.git
 cd hbase
 
 ```
@@ -50,10 +50,10 @@ Su boot2docker usare questo
 
 ### 4. Avviare l'immagine
 
-avvia l'immagine in modalità demone con porte 2181, 60010, 60000, 60020 e 60030 aperte
+avvia l'immagine in modalità demone con porte 8080, 2181, 60010, 60000, 60020 e 60030 aperte
 ```bash
 
-docker run -d -p 2181:2181 -p 60010:60010 -p 60000:60000 -p 60020:60020 -p 60030:60030 --name hbase -h hbase hbase:single
+docker run -d -p 8080:8080 -p 2181:2181 -p 60010:60010 -p 60000:60000 -p 60020:60020 -p 60030:60030 --name hbase -h hbase hbase:single
 
 ```
 
