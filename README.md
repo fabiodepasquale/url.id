@@ -36,7 +36,7 @@ git clone https://github.com/alex-krestin/uid-docker.git
 ```
 docker build --tag=url.id:latest uid-docker/
 ```
-#####3. Follow post install instructions
+#####4. Follow post install instructions
 
 ##Post Install:
 #####Start container (install from repository)
