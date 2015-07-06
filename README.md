@@ -49,7 +49,7 @@ docker run -d -p 2181:2181 -p 60010:60010 -p 60000:60000 -p 60020:60020 -p 60030
 ```
 #####Enter in container
 ```
-docker run exec -it uid bash
+docker exec -it uid bash
 ```
 #####First run
 Firstly you need to initialize your database before running web server.
