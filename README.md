@@ -1,5 +1,10 @@
 # URL.id - URL Shortener
 
+[![Hbase](https://img.shields.io/badge/hbase-1.1.0.1-orange.svg)](http://hbase.apache.org/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.3.4-brightgreen.svg)](http://projects.spring.io/spring-boot/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-3.3.5-brightgreen.svg)](http://getbootstrap.com/)
+[![AngularJS](https://img.shields.io/badge/AngularJS-1.4.1-blue.svg)](https://angularjs.org/)
+
 In order to use our URL Shortener you need to have `boot2docker` or `docker-machine` installed.
 Then you can choose to use automatic download of the docker image from our repository or build it yourself from the source.
 
