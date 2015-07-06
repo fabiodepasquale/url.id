@@ -37,7 +37,6 @@ public class PageController {
 
     @RequestMapping("{shortUrl}")
     public String redirect(@PathVariable String shortUrl) throws IOException, ServletException, GeoIp2Exception {
-        System.out.println("SU: "+shortUrl);
         ShortURL su = new ShortURL();
         int status = su.existShortUrl(shortUrl);
 
