@@ -28,16 +28,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-		<resources>
-			<resource>
-				<directory>/public</directory>
-				<targetPath>/public</targetPath>
-			</resource>
-			<resource>
-				<directory>/src/main/resources</directory>
-				<targetPath>/src/main/resources</targetPath>
-			</resource>
-		</resources>
     </build>
 
     <dependencies>
