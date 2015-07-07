@@ -54,8 +54,7 @@ docker exec -it uid bash
 #####First run
 Firstly you need to initialize your database before running web server.
 ```bash
-> cd uid
-> java -jar uid-1.0.jar -i
+> uid.sh -i
 ```
 If you got an error during this operation, please control if you have HBase running
 ```bash
@@ -64,10 +63,9 @@ If you got an error during this operation, please control if you have HBase runn
 ```
 After succesfully initialization you can start normally use the application. For starting web and API server use the next command
 ```bash
-> java -jar uid-1.0.jar -a
+> uid.sh -a
 ```
 Then go to `http://localhost:8080` in your browser.
 
 > NOTE:
 > If you're using `virtual-box`, don't forget to open port 8080 in order to comunicate with API and client GUI.
-
