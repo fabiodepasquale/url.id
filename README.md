@@ -30,7 +30,7 @@ boot2docker ssh
 ```
 #####2. Clone repository with Dockerfile
 ```
-git clone https://github.com/alex-krestin/uid-docker.git
+git clone https://github.com/fabiodepasquale/uid-docker.git
 ```
 #####3. Build docker image
 ```
